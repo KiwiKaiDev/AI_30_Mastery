@@ -1,0 +1,2123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0a0a0f">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="AI Mastery">
+<meta name="description" content="30-Day AI Product Mastery Program">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-192.png">
+<title>AI Product Mastery — 30-Day Program</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;500;600;700;800;900&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-primary: #0a0a0f;
+  --bg-secondary: #12121a;
+  --bg-tertiary: #1a1a28;
+  --bg-card: #15151f;
+  --bg-card-hover: #1c1c2e;
+  --text-primary: #e8e6e3;
+  --text-secondary: #9a97a0;
+  --text-muted: #5c5a63;
+  --accent-cyan: #00e5c8;
+  --accent-cyan-dim: rgba(0, 229, 200, 0.15);
+  --accent-cyan-glow: rgba(0, 229, 200, 0.3);
+  --accent-purple: #8b5cf6;
+  --accent-purple-dim: rgba(139, 92, 246, 0.15);
+  --accent-orange: #f97316;
+  --accent-orange-dim: rgba(249, 115, 22, 0.12);
+  --accent-rose: #f43f5e;
+  --accent-rose-dim: rgba(244, 63, 94, 0.12);
+  --accent-blue: #3b82f6;
+  --accent-blue-dim: rgba(59, 130, 246, 0.12);
+  --accent-amber: #f59e0b;
+  --accent-amber-dim: rgba(245, 158, 11, 0.12);
+  --border: rgba(255, 255, 255, 0.06);
+  --border-active: rgba(0, 229, 200, 0.3);
+  --code-bg: #0d0d14;
+  --radius: 12px;
+  --radius-lg: 20px;
+  --font-display: 'Outfit', sans-serif;
+  --font-body: 'Source Serif 4', Georgia, serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --sidebar-width: 300px;
+  --content-max: 780px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: var(--bg-tertiary) transparent;
+}
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--accent-cyan-dim);
+  color: var(--accent-cyan);
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--bg-tertiary); border-radius: 3px; }
+
+/* ====== SIDEBAR ====== */
+.sidebar {
+  position: fixed;
+  top: 0; left: 0;
+  width: var(--sidebar-width);
+  height: 100vh;
+  background: var(--bg-secondary);
+  border-right: 1px solid var(--border);
+  overflow-y: auto;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sidebar-header {
+  padding: 28px 24px 20px;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.sidebar-logo {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 18px;
+  color: var(--text-primary);
+  letter-spacing: -0.03em;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sidebar-logo .logo-icon {
+  width: 32px; height: 32px;
+  background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  color: #000;
+  font-weight: 900;
+}
+
+.sidebar-subtitle {
+  font-family: var(--font-display);
+  font-size: 12px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: 4px;
+}
+
+.sidebar-nav {
+  padding: 16px 12px;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.nav-week {
+  margin-bottom: 8px;
+}
+
+.nav-week-title {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+  padding: 8px 12px 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.2s;
+}
+
+.nav-week-title:hover { color: var(--text-secondary); }
+
+.nav-week-title .week-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.week-1 .week-dot { background: var(--accent-cyan); }
+.week-2 .week-dot { background: var(--accent-purple); }
+.week-3 .week-dot { background: var(--accent-orange); }
+.week-4 .week-dot { background: var(--accent-rose); }
+.week-5 .week-dot { background: var(--accent-blue); }
+.week-6 .week-dot { background: var(--accent-amber); }
+
+.nav-items {
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.nav-items.collapsed { max-height: 0 !important; }
+
+.nav-link {
+  display: block;
+  padding: 7px 12px 7px 26px;
+  font-family: var(--font-display);
+  font-size: 13.5px;
+  font-weight: 400;
+  color: var(--text-secondary);
+  text-decoration: none;
+  border-radius: 8px;
+  transition: all 0.2s;
+  line-height: 1.4;
+}
+
+.nav-link:hover {
+  color: var(--text-primary);
+  background: rgba(255,255,255,0.04);
+}
+
+.nav-link.active {
+  color: var(--accent-cyan);
+  background: var(--accent-cyan-dim);
+  font-weight: 500;
+}
+
+.nav-link.locked {
+  color: var(--text-muted);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.nav-link .lock-icon { font-size: 10px; margin-left: 4px; }
+
+.sidebar-footer {
+  padding: 16px 24px;
+  border-top: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.progress-bar-container {
+  margin-bottom: 6px;
+}
+
+.progress-label {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.progress-track {
+  width: 100%;
+  height: 4px;
+  background: var(--bg-tertiary);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 3.3%;
+  background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
+  border-radius: 2px;
+  transition: width 0.5s ease;
+}
+
+/* ====== MOBILE TOGGLE ====== */
+.mobile-toggle {
+  display: none;
+  position: fixed;
+  top: 16px; left: 16px;
+  z-index: 200;
+  width: 44px; height: 44px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-primary);
+  font-size: 20px;
+  transition: background 0.2s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.mobile-toggle:hover { background: var(--bg-tertiary); }
+
+/* Desktop sidebar toggle */
+.desktop-toggle {
+  position: fixed;
+  top: 16px;
+  left: calc(var(--sidebar-width) + 16px);
+  z-index: 150;
+  width: 36px; height: 36px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  font-size: 16px;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.desktop-toggle:hover { background: var(--bg-tertiary); color: var(--accent-cyan); }
+
+.desktop-toggle .toggle-icon {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 16px;
+  transition: all 0.3s;
+}
+
+.desktop-toggle .toggle-icon span {
+  display: block;
+  height: 2px;
+  background: currentColor;
+  border-radius: 1px;
+  transition: all 0.3s;
+}
+
+.desktop-toggle .toggle-icon span:nth-child(1) { width: 100%; }
+.desktop-toggle .toggle-icon span:nth-child(2) { width: 70%; }
+.desktop-toggle .toggle-icon span:nth-child(3) { width: 100%; }
+
+body.sidebar-collapsed .desktop-toggle { left: 16px; }
+body.sidebar-collapsed .desktop-toggle .toggle-icon span:nth-child(2) { width: 100%; }
+
+body.sidebar-collapsed .sidebar {
+  transform: translateX(-100%);
+}
+
+body.sidebar-collapsed .main {
+  margin-left: 0;
+}
+
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 90;
+  backdrop-filter: blur(4px);
+}
+
+/* ====== MAIN CONTENT ====== */
+.main {
+  margin-left: var(--sidebar-width);
+  min-height: 100vh;
+  transition: margin-left 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.content-wrapper {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: 60px 40px 120px;
+}
+
+/* ====== HERO ====== */
+.hero {
+  margin-bottom: 64px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid var(--border);
+  animation: fadeInUp 0.6s ease;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  background: var(--accent-cyan-dim);
+  border: 1px solid rgba(0, 229, 200, 0.2);
+  border-radius: 100px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--accent-cyan);
+  margin-bottom: 24px;
+  letter-spacing: 0.02em;
+}
+
+.hero-badge .pulse {
+  width: 6px; height: 6px;
+  background: var(--accent-cyan);
+  border-radius: 50%;
+  animation: pulse 2s ease infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 5vw, 52px);
+  font-weight: 900;
+  line-height: 1.08;
+  letter-spacing: -0.04em;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+}
+
+.hero h1 .gradient-text {
+  background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-description {
+  font-size: 18px;
+  color: var(--text-secondary);
+  max-width: 560px;
+  line-height: 1.7;
+}
+
+.hero-meta {
+  display: flex;
+  gap: 24px;
+  margin-top: 28px;
+  flex-wrap: wrap;
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-display);
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.meta-icon {
+  width: 32px; height: 32px;
+  background: var(--bg-tertiary);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+
+/* ====== WEEK OVERVIEW CARDS ====== */
+.week-overview {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px;
+  margin-bottom: 64px;
+}
+
+.week-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  cursor: pointer;
+  transition: all 0.25s;
+  position: relative;
+  overflow: hidden;
+}
+
+.week-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 3px;
+}
+
+.week-card.w1::before { background: var(--accent-cyan); }
+.week-card.w2::before { background: var(--accent-purple); }
+.week-card.w3::before { background: var(--accent-orange); }
+.week-card.w4::before { background: var(--accent-rose); }
+.week-card.w5::before { background: var(--accent-blue); }
+.week-card.w6::before { background: var(--accent-amber); }
+
+.week-card:hover {
+  background: var(--bg-card-hover);
+  border-color: rgba(255,255,255,0.1);
+  transform: translateY(-2px);
+}
+
+.week-card .week-num {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 8px;
+}
+
+.week-card.w1 .week-num { color: var(--accent-cyan); }
+.week-card.w2 .week-num { color: var(--accent-purple); }
+.week-card.w3 .week-num { color: var(--accent-orange); }
+.week-card.w4 .week-num { color: var(--accent-rose); }
+.week-card.w5 .week-num { color: var(--accent-blue); }
+.week-card.w6 .week-num { color: var(--accent-amber); }
+
+.week-card .week-title {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.35;
+}
+
+.week-card .week-tag {
+  font-family: var(--font-display);
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 8px;
+}
+
+/* ====== SECTION / SESSION CONTENT ====== */
+.session-block {
+  margin-bottom: 72px;
+  animation: fadeInUp 0.5s ease;
+}
+
+.session-header {
+  margin-bottom: 36px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--border);
+}
+
+.session-tag {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--accent-cyan);
+  letter-spacing: 0.04em;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.session-tag .dot {
+  width: 8px; height: 8px;
+  background: var(--accent-cyan);
+  border-radius: 50%;
+}
+
+.session-header h2 {
+  font-family: var(--font-display);
+  font-size: clamp(26px, 3.5vw, 34px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.session-header .duration {
+  font-family: var(--font-display);
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+/* ====== SUBSECTION ====== */
+.subsection {
+  margin-bottom: 40px;
+}
+
+.subsection h3 {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+  padding-left: 16px;
+  border-left: 3px solid var(--accent-cyan);
+}
+
+.subsection p {
+  color: var(--text-primary);
+  margin-bottom: 16px;
+}
+
+.subsection strong {
+  color: var(--accent-cyan);
+  font-weight: 600;
+}
+
+/* ====== HIGHLIGHT BOX ====== */
+.highlight-box {
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent-purple);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: 20px 24px;
+  margin: 20px 0;
+}
+
+.highlight-box.cyan { border-left-color: var(--accent-cyan); }
+.highlight-box.orange { border-left-color: var(--accent-orange); }
+.highlight-box.rose { border-left-color: var(--accent-rose); }
+
+.highlight-box h4 {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--accent-purple);
+  margin-bottom: 12px;
+}
+
+.highlight-box.cyan h4 { color: var(--accent-cyan); }
+.highlight-box.orange h4 { color: var(--accent-orange); }
+.highlight-box.rose h4 { color: var(--accent-rose); }
+
+.highlight-box p, .highlight-box li {
+  color: var(--text-secondary);
+  font-size: 16px;
+}
+
+/* ====== AI TYPE CARDS ====== */
+.ai-type-cards {
+  display: grid;
+  gap: 16px;
+  margin: 24px 0;
+}
+
+.ai-type-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  transition: border-color 0.3s;
+}
+
+.ai-type-card:hover { border-color: rgba(255,255,255,0.12); }
+
+.ai-type-card .type-label {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 4px;
+}
+
+.ai-type-card.predictive .type-label { color: var(--accent-purple); }
+.ai-type-card.generative .type-label { color: var(--accent-cyan); }
+.ai-type-card.analytical .type-label { color: var(--accent-orange); }
+
+.ai-type-card .type-title {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+
+.ai-type-card .type-desc {
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+  font-size: 15.5px;
+}
+
+.ai-type-card .corporate-example {
+  background: rgba(0,0,0,0.3);
+  border-radius: 8px;
+  padding: 14px 16px;
+  margin-top: 12px;
+}
+
+.ai-type-card .corporate-example .example-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+.ai-type-card .corporate-example p {
+  font-size: 14.5px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+.mental-model {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--accent-cyan);
+  background: var(--accent-cyan-dim);
+  padding: 6px 12px;
+  border-radius: 6px;
+  display: inline-block;
+  margin-top: 8px;
+}
+
+/* ====== MYTH BUSTERS ====== */
+.myth-list {
+  display: grid;
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.myth-item {
+  display: flex;
+  gap: 14px;
+  padding: 16px 20px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.myth-icon {
+  flex-shrink: 0;
+  width: 28px; height: 28px;
+  background: var(--accent-rose-dim);
+  color: var(--accent-rose);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.myth-item .myth-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.myth-item .myth-desc {
+  font-size: 14.5px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ====== GLOSSARY TABLE ====== */
+.glossary-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 24px 0;
+  font-size: 15px;
+}
+
+.glossary-table thead th {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  text-align: left;
+  padding: 12px 16px;
+  border-bottom: 2px solid var(--border);
+}
+
+.glossary-table tbody td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+
+.glossary-table tbody tr:hover { background: rgba(255,255,255,0.02); }
+
+.glossary-table .term-name {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: var(--accent-cyan);
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.glossary-table .term-def { color: var(--text-secondary); }
+.glossary-table .term-why { color: var(--text-muted); font-size: 14px; }
+
+/* ====== CODE BLOCK ====== */
+.code-block {
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px 24px;
+  margin: 20px 0;
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 13.5px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+.code-block .tree-line { color: var(--text-muted); }
+.code-block .tree-highlight { color: var(--accent-cyan); font-weight: 600; }
+.code-block .tree-sub { color: var(--accent-purple); }
+.code-block .tree-dim { color: var(--text-muted); font-size: 12px; }
+
+/* ====== FRAMEWORK BOX ====== */
+.framework-box {
+  background: linear-gradient(135deg, rgba(0, 229, 200, 0.06), rgba(139, 92, 246, 0.06));
+  border: 1px solid rgba(0, 229, 200, 0.15);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  margin: 28px 0;
+}
+
+.framework-box .framework-title {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--accent-cyan);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.framework-box .framework-title .icon {
+  font-size: 22px;
+}
+
+.framework-questions {
+  display: grid;
+  gap: 16px;
+  counter-reset: question;
+}
+
+.framework-q {
+  counter-increment: question;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.framework-q::before {
+  content: counter(question);
+  flex-shrink: 0;
+  width: 30px; height: 30px;
+  background: var(--accent-cyan-dim);
+  color: var(--accent-cyan);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.framework-q .q-text {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+
+.framework-q .q-subtext {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* ====== SCENARIO BOX ====== */
+.scenario-box {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  margin: 24px 0;
+}
+
+.scenario-header {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent-orange);
+  margin-bottom: 8px;
+}
+
+.scenario-prompt {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 17px;
+  color: var(--text-primary);
+  padding: 12px 16px;
+  background: rgba(0,0,0,0.25);
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border-left: 3px solid var(--accent-orange);
+}
+
+.scenario-analysis {
+  display: grid;
+  gap: 12px;
+}
+
+.analysis-step {
+  display: flex;
+  gap: 12px;
+}
+
+.step-num {
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--accent-cyan);
+  width: 24px; height: 24px;
+  background: var(--accent-cyan-dim);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
+}
+
+.step-text { font-size: 15.5px; color: var(--text-secondary); line-height: 1.6; }
+.step-text strong { color: var(--text-primary); }
+
+.scenario-verdict {
+  margin-top: 16px;
+  padding: 14px 18px;
+  background: var(--accent-cyan-dim);
+  border-radius: 10px;
+  font-family: var(--font-display);
+  font-size: 14.5px;
+  font-weight: 500;
+  color: var(--accent-cyan);
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.scenario-verdict .verdict-icon { font-size: 18px; flex-shrink: 0; }
+
+/* ====== SNAPSHOT LIST ====== */
+.snapshot-list {
+  display: grid;
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.snapshot-item {
+  padding: 16px 20px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  display: flex;
+  gap: 14px;
+}
+
+.snapshot-item .snap-icon {
+  flex-shrink: 0;
+  font-size: 20px;
+  margin-top: 2px;
+}
+
+.snapshot-item .snap-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.snapshot-item .snap-desc {
+  font-size: 14.5px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ====== EXERCISE BOX ====== */
+.exercise-box {
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.08), rgba(244, 63, 94, 0.05));
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  margin: 40px 0;
+}
+
+.exercise-box .exercise-label {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent-purple);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.exercise-box .exercise-title {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+}
+
+.exercise-box ol {
+  padding-left: 20px;
+  display: grid;
+  gap: 10px;
+}
+
+.exercise-box li {
+  font-size: 15.5px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.exercise-note {
+  margin-top: 16px;
+  font-family: var(--font-display);
+  font-size: 13px;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* ====== EXERCISE FEEDBACK ====== */
+.exercise-feedback {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  margin: 24px 0;
+}
+
+.feedback-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.feedback-title {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.score-badge {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 700;
+  padding: 4px 14px;
+  border-radius: 100px;
+  background: var(--accent-cyan-dim);
+  color: var(--accent-cyan);
+  border: 1px solid rgba(0, 229, 200, 0.25);
+}
+
+.feedback-item {
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.feedback-item:last-child { border-bottom: none; }
+
+.feedback-q-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+.feedback-good {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+  font-size: 15px;
+  color: var(--accent-cyan);
+}
+
+.feedback-correction {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+  font-size: 15px;
+  color: var(--accent-orange);
+}
+
+.feedback-good .fb-icon,
+.feedback-correction .fb-icon {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.feedback-text {
+  color: var(--text-secondary);
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.feedback-text strong { color: var(--text-primary); }
+
+.feedback-takeaway {
+  margin-top: 16px;
+  padding: 14px 18px;
+  background: var(--accent-purple-dim);
+  border-radius: 10px;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--accent-purple);
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.feedback-takeaway .takeaway-icon { flex-shrink: 0; font-size: 16px; }
+
+/* ====== LOCKED SECTION ====== */
+.locked-section {
+  text-align: center;
+  padding: 48px 24px;
+  margin: 24px 0;
+  background: var(--bg-card);
+  border: 1px dashed rgba(255,255,255,0.1);
+  border-radius: var(--radius-lg);
+}
+
+.locked-section .lock-emoji { font-size: 32px; margin-bottom: 12px; }
+
+.locked-section .lock-text {
+  font-family: var(--font-display);
+  font-size: 15px;
+  color: var(--text-muted);
+}
+
+/* ====== BACK TO TOP ====== */
+.back-to-top {
+  position: fixed;
+  bottom: 32px; right: 32px;
+  width: 44px; height: 44px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s;
+  z-index: 50;
+  font-size: 18px;
+}
+
+.back-to-top.visible { opacity: 1; transform: translateY(0); }
+.back-to-top:hover { background: var(--bg-tertiary); color: var(--accent-cyan); }
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 900px) {
+  .sidebar { transform: translateX(-100%); }
+  .sidebar.open { transform: translateX(0); }
+  .sidebar-overlay.active { display: block; }
+  .mobile-toggle { display: flex; }
+  .desktop-toggle { display: none; }
+  .main { margin-left: 0; }
+  body.sidebar-collapsed .main { margin-left: 0; }
+  .content-wrapper { padding: 80px 20px 100px; }
+  .week-overview { grid-template-columns: repeat(2, 1fr); }
+  .glossary-table { font-size: 13.5px; }
+  .glossary-table thead th, .glossary-table tbody td { padding: 10px 10px; }
+  .framework-box, .scenario-box, .exercise-box { padding: 22px; }
+}
+
+@media (max-width: 500px) {
+  .week-overview { grid-template-columns: 1fr; }
+  .hero-meta { gap: 14px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Desktop Sidebar Toggle -->
+<button class="desktop-toggle" id="desktopToggle" aria-label="Toggle sidebar">
+  <div class="toggle-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</button>
+
+<!-- Mobile Toggle -->
+<button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">☰</button>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<!-- Sidebar -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <div class="sidebar-logo">
+      <div class="logo-icon">AI</div>
+      AI Product Mastery
+    </div>
+    <div class="sidebar-subtitle">30-Day Program</div>
+  </div>
+
+  <nav class="sidebar-nav">
+    <div class="nav-week week-1">
+      <div class="nav-week-title" onclick="toggleWeek(this)">
+        <span class="week-dot"></span> Week 1 — Foundations
+      </div>
+      <div class="nav-items">
+        <a href="#session-1" class="nav-link">1. What AI Actually Is</a>
+        <a href="#session-2" class="nav-link active">2. AI Product Landscape</a>
+        <a href="#session-3" class="nav-link locked">3. How LLMs Work <span class="lock-icon">🔒</span></a>
+        <a href="#session-4" class="nav-link locked">4. AI vs Traditional Product <span class="lock-icon">🔒</span></a>
+        <a href="#session-5" class="nav-link locked">5. The AI Value Chain <span class="lock-icon">🔒</span></a>
+        <a href="#week1-exam" class="nav-link locked">📝 Week 1 Exam <span class="lock-icon">🔒</span></a>
+      </div>
+    </div>
+
+    <div class="nav-week week-2">
+      <div class="nav-week-title" onclick="toggleWeek(this)">
+        <span class="week-dot"></span> Week 2 — Core Skills
+      </div>
+      <div class="nav-items collapsed">
+        <a href="#" class="nav-link locked">6. Problem-Solution Fit <span class="lock-icon">🔒</span></a>
+        <a href="#" class="nav-link locked">7. Prompt Engineering <span class="lock-icon">🔒</span></a>
+        <a href="#" class="nav-link locked">8. Evaluating AI Outputs <span class="lock-icon">🔒</span></a>
+        <a href="#" class="nav-link locked">9. Data Thinking <span class="lock-icon">🔒</span></a>
+        <a href="#" class="nav-link locked">10. User Research for AI <span class="lock-icon">🔒</span></a>
+        <a href="#" class="nav-link locked">📝 Week 2 Exam <span class="lock-icon">🔒</span></a>
+      </div>
+    </div>
+
+    <div class="nav-week week-3">
+      <div class="nav-week-title" onclick="toggleWeek(this)">
+        <span class="week-dot"></span> Week 3 — Building & Shipping
+      </div>
+      <div class="nav-items collapsed">
+        <a href="#" class="nav-link locked">11. Designing AI Features <span class="lock-icon">🔒</span></a>
+        <a href="#" class="nav-link locked">12. No-Code Prototyping <span class="lock-icon">🔒</span></a>
+        <a href="#" class="nav-link locked">13. RAG & Knowledge Systems <span class="lock-icon">🔒</span></a>
+        <a href="#" class="nav-link locked">14. AI Agents <span class="lock-icon">🔒</span></a>
+        <a href="#" class="nav-link locked">15. AI Product Spec <span class="lock-icon">🔒</span></a>
+        <a href="#" class="nav-link locked">📝 Week 3 Exam <span class="lock-icon">🔒</span></a>
+      </div>
+    </div>
+
+    <div class="nav-week week-4">
+      <div class="nav-week-title" onclick="toggleWeek(this)">
+        <span class="week-dot"></span> Week 4 — Go-to-Market
+      </div>
+      <div class="nav-items collapsed">
+        <a href="#" class="nav-link locked">16. Positioning & Messaging <span class="lock-icon">🔒</span></a>
+        <a href="#" class="nav-link locked">17. Competitive Analysis <span class="lock-icon">🔒</span></a>
+        <a href="#" class="nav-link locked">18. Pricing AI Products <span class="lock-icon">🔒</span></a>
+        <a href="#" class="nav-link locked">19. Ethics & Safety <span class="lock-icon">🔒</span></a>
+        <a href="#" class="nav-link locked">20. Regulatory Landscape <span class="lock-icon">🔒</span></a>
+        <a href="#" class="nav-link locked">📝 Week 4 Exam <span class="lock-icon">🔒</span></a>
+      </div>
+    </div>
+
+    <div class="nav-week week-5">
+      <div class="nav-week-title" onclick="toggleWeek(this)">
+        <span class="week-dot"></span> Week 5 — Industry Deep Dives
+      </div>
+      <div class="nav-items collapsed">
+        <a href="#" class="nav-link locked">21. AI in Enterprise SaaS <span class="lock-icon">🔒</span></a>
+        <a href="#" class="nav-link locked">22. Healthcare, Finance, Legal <span class="lock-icon">🔒</span></a>
+        <a href="#" class="nav-link locked">23. Internal Tools & Ops <span class="lock-icon">🔒</span></a>
+        <a href="#" class="nav-link locked">24. Vertical vs Horizontal AI <span class="lock-icon">🔒</span></a>
+        <a href="#" class="nav-link locked">25. Case Study Teardown <span class="lock-icon">🔒</span></a>
+        <a href="#" class="nav-link locked">📝 Week 5 Exam <span class="lock-icon">🔒</span></a>
+      </div>
+    </div>
+
+    <div class="nav-week week-6">
+      <div class="nav-week-title" onclick="toggleWeek(this)">
+        <span class="week-dot"></span> Week 6 — Career & Capstone
+      </div>
+      <div class="nav-items collapsed">
+        <a href="#" class="nav-link locked">26. AI PM Skillstack <span class="lock-icon">🔒</span></a>
+        <a href="#" class="nav-link locked">27. Building Your Portfolio <span class="lock-icon">🔒</span></a>
+        <a href="#" class="nav-link locked">28. Interview Prep <span class="lock-icon">🔒</span></a>
+        <a href="#" class="nav-link locked">29. Your AI Toolkit <span class="lock-icon">🔒</span></a>
+        <a href="#" class="nav-link locked">30. Capstone Project <span class="lock-icon">🔒</span></a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="sidebar-footer">
+    <div class="progress-bar-container">
+      <div class="progress-label">
+        <span>Progress</span>
+        <span>2 / 30</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" style="width: 6.6%;"></div>
+      </div>
+    </div>
+  </div>
+</aside>
+
+<!-- Main Content -->
+<main class="main">
+  <div class="content-wrapper">
+
+    <!-- Hero -->
+    <header class="hero" id="top">
+      <div class="hero-badge">
+        <span class="pulse"></span>
+        Session 2 Unlocked
+      </div>
+      <h1>AI Product<br><span class="gradient-text">Mastery</span></h1>
+      <p class="hero-description">
+        A 30-day intensive program to transform you into a competent AI product professional who bridges AI capabilities with business value.
+      </p>
+      <div class="hero-meta">
+        <div class="meta-item">
+          <div class="meta-icon">📚</div>
+          <span>30 Sessions</span>
+        </div>
+        <div class="meta-item">
+          <div class="meta-icon">⏱</div>
+          <span>30-40 min each</span>
+        </div>
+        <div class="meta-item">
+          <div class="meta-icon">📝</div>
+          <span>5 Exams</span>
+        </div>
+        <div class="meta-item">
+          <div class="meta-icon">🎯</div>
+          <span>1 Capstone</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Week Overview -->
+    <div class="week-overview">
+      <div class="week-card w1" onclick="document.getElementById('session-1').scrollIntoView({behavior:'smooth'})">
+        <div class="week-num">Week 1</div>
+        <div class="week-title">Foundations</div>
+        <div class="week-tag">"Speak AI Fluently"</div>
+      </div>
+      <div class="week-card w2">
+        <div class="week-num">Week 2</div>
+        <div class="week-title">Core Skills</div>
+        <div class="week-tag">"Think Like an AI PM"</div>
+      </div>
+      <div class="week-card w3">
+        <div class="week-num">Week 3</div>
+        <div class="week-title">Building & Shipping</div>
+        <div class="week-tag">"Get Hands-On"</div>
+      </div>
+      <div class="week-card w4">
+        <div class="week-num">Week 4</div>
+        <div class="week-title">Go-to-Market</div>
+        <div class="week-tag">"Sell the Vision"</div>
+      </div>
+      <div class="week-card w5">
+        <div class="week-num">Week 5</div>
+        <div class="week-title">Deep Dives</div>
+        <div class="week-tag">"Know the Domains"</div>
+      </div>
+      <div class="week-card w6">
+        <div class="week-num">Week 6</div>
+        <div class="week-title">Career & Capstone</div>
+        <div class="week-tag">"Land the Role"</div>
+      </div>
+    </div>
+
+    <!-- ==================== SESSION 1 ==================== -->
+    <section class="session-block" id="session-1">
+      <div class="session-header">
+        <div class="session-tag"><span class="dot"></span> Session 01 · Week 1</div>
+        <h2>What AI Actually Is (and Isn't)</h2>
+        <div class="duration">Duration: 30-40 minutes · Day 1</div>
+      </div>
+
+      <!-- 1.1 -->
+      <div class="subsection">
+        <h3>1.1 The Big Picture</h3>
+        <p>
+          Artificial Intelligence is not one thing — it's an umbrella term for machines performing tasks that typically require human intelligence. The confusion in the market comes from people using "AI" to mean very different things. As a product person, your job is to cut through the noise.
+        </p>
+        <p><strong>The AI hierarchy</strong> — think of it as nesting dolls:</p>
+        <div class="code-block">
+          <div><span class="tree-highlight">Artificial Intelligence</span> <span class="tree-dim">(broadest — any smart-seeming system)</span></div>
+          <div>&nbsp;&nbsp;└── <span class="tree-sub">Machine Learning</span> <span class="tree-dim">(systems that learn from data)</span></div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── <span class="tree-sub">Deep Learning</span> <span class="tree-dim">(ML using neural networks with many layers)</span></div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── <span class="tree-sub">Generative AI</span> <span class="tree-dim">(deep learning that creates new content)</span></div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── <span class="tree-highlight">Large Language Models</span> <span class="tree-dim">(GenAI specialized in text)</span></div>
+        </div>
+      </div>
+
+      <!-- 1.2 -->
+      <div class="subsection">
+        <h3>1.2 Types of AI That Matter for Products</h3>
+        <div class="ai-type-cards">
+
+          <div class="ai-type-card predictive">
+            <div class="type-label">Predictive AI</div>
+            <div class="type-title">The "Old" AI — Still Massively Valuable</div>
+            <div class="type-desc">Takes input data → predicts an outcome. Used in Netflix recommendations, fraud detection, demand forecasting.</div>
+            <div class="corporate-example">
+              <div class="example-label">Corporate Example</div>
+              <p><strong style="color:var(--text-primary)">Amazon's supply chain</strong> uses predictive AI to pre-position inventory in warehouses before you even order. This saves billions in logistics costs.</p>
+            </div>
+            <div class="mental-model">"Given X, what's likely Y?"</div>
+          </div>
+
+          <div class="ai-type-card generative">
+            <div class="type-label">Generative AI</div>
+            <div class="type-title">The "New" AI — What Everyone's Excited About</div>
+            <div class="type-desc">Takes a prompt/input → creates new content (text, image, code, audio). Examples: ChatGPT, Claude, Midjourney, GitHub Copilot.</div>
+            <div class="corporate-example">
+              <div class="example-label">Corporate Example</div>
+              <p><strong style="color:var(--text-primary)">Klarna</strong> replaced 700 customer service agents with an AI assistant handling 2.3 million conversations in its first month (2024). It does the same work in 2 minutes that used to take 11 minutes.</p>
+            </div>
+            <div class="mental-model">"Given this instruction, create something new."</div>
+          </div>
+
+          <div class="ai-type-card analytical">
+            <div class="type-label">Analytical AI</div>
+            <div class="type-title">The Workhorse Nobody Talks About</div>
+            <div class="type-desc">Processes and extracts insights from large datasets. Used in business intelligence, anomaly detection, document parsing.</div>
+            <div class="corporate-example">
+              <div class="example-label">Corporate Example</div>
+              <p><strong style="color:var(--text-primary)">JPMorgan's COiN platform</strong> analyzes commercial loan agreements in seconds — work that used to take lawyers 360,000 hours annually.</p>
+            </div>
+            <div class="mental-model">"Given this pile of data, what's important?"</div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 1.3 -->
+      <div class="subsection">
+        <h3>1.3 What AI Is NOT</h3>
+        <p>This is critical for your credibility as a product person. You must be the one in the room who doesn't overpromise.</p>
+        <div class="myth-list">
+          <div class="myth-item">
+            <div class="myth-icon">✕</div>
+            <div>
+              <div class="myth-title">AI is not "thinking."</div>
+              <div class="myth-desc">It's pattern matching at massive scale. LLMs don't understand meaning — they predict the most statistically likely next token.</div>
+            </div>
+          </div>
+          <div class="myth-item">
+            <div class="myth-icon">✕</div>
+            <div>
+              <div class="myth-title">AI is not reliable by default.</div>
+              <div class="myth-desc">Models hallucinate (confidently produce wrong information). This is not a bug being fixed — it's inherent to how probabilistic models work.</div>
+            </div>
+          </div>
+          <div class="myth-item">
+            <div class="myth-icon">✕</div>
+            <div>
+              <div class="myth-title">AI is not a replacement for product strategy.</div>
+              <div class="myth-desc">"Add AI" is not a strategy. The question is always: what specific user problem does this solve better than the alternative?</div>
+            </div>
+          </div>
+          <div class="myth-item">
+            <div class="myth-icon">✕</div>
+            <div>
+              <div class="myth-title">AI is not magic.</div>
+              <div class="myth-desc">Behind every impressive demo is careful data curation, prompt engineering, guardrails, fallback systems, and human oversight.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 1.4 -->
+      <div class="subsection">
+        <h3>1.4 The Key Terms You Must Know</h3>
+        <div style="overflow-x:auto;">
+          <table class="glossary-table">
+            <thead>
+              <tr>
+                <th>Term</th>
+                <th>Plain English</th>
+                <th>Why It Matters</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="term-name">Model</td>
+                <td class="term-def">A trained AI system (like GPT-4, Claude, Gemini)</td>
+                <td class="term-why">You choose which model fits your product's needs</td>
+              </tr>
+              <tr>
+                <td class="term-name">Training</td>
+                <td class="term-def">The process of teaching a model using data</td>
+                <td class="term-why">Determines what the model knows and its biases</td>
+              </tr>
+              <tr>
+                <td class="term-name">Inference</td>
+                <td class="term-def">When a trained model processes new input and gives output</td>
+                <td class="term-why">This is what your users experience — and what you pay for</td>
+              </tr>
+              <tr>
+                <td class="term-name">Parameters</td>
+                <td class="term-def">Internal "knobs" a model adjusts during training (billions of them)</td>
+                <td class="term-why">More parameters ≠ always better. Impacts cost and speed</td>
+              </tr>
+              <tr>
+                <td class="term-name">Hallucination</td>
+                <td class="term-def">AI generates confident but factually wrong output</td>
+                <td class="term-why">Your #1 product risk with GenAI</td>
+              </tr>
+              <tr>
+                <td class="term-name">Fine-tuning</td>
+                <td class="term-def">Additional training on specific data to specialize a model</td>
+                <td class="term-why">How you make a general model work for your domain</td>
+              </tr>
+              <tr>
+                <td class="term-name">Prompt</td>
+                <td class="term-def">The input/instruction you give to a model</td>
+                <td class="term-why">The interface between user intent and AI output</td>
+              </tr>
+              <tr>
+                <td class="term-name">Token</td>
+                <td class="term-def">A chunk of text (~4 characters or ~¾ of a word)</td>
+                <td class="term-why">How AI companies charge you and how context limits work</td>
+              </tr>
+              <tr>
+                <td class="term-name">Latency</td>
+                <td class="term-def">Time between sending input and receiving output</td>
+                <td class="term-why">Directly impacts user experience</td>
+              </tr>
+              <tr>
+                <td class="term-name">Guardrails</td>
+                <td class="term-def">Rules/filters that prevent unwanted AI outputs</td>
+                <td class="term-why">Essential for production AI products</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 1.5 -->
+      <div class="subsection">
+        <h3>1.5 A Framework for Thinking About AI in Products</h3>
+        <p>Use this whenever someone pitches you an "AI feature":</p>
+
+        <div class="framework-box">
+          <div class="framework-title"><span class="icon">⚡</span> The 3-Question Filter</div>
+          <div class="framework-questions">
+            <div class="framework-q">
+              <div>
+                <div class="q-text">Is this a prediction problem, a generation problem, or an analysis problem?</div>
+                <div class="q-subtext">This tells you what type of AI you need.</div>
+              </div>
+            </div>
+            <div class="framework-q">
+              <div>
+                <div class="q-text">What happens when the AI is wrong?</div>
+                <div class="q-subtext">This tells you the risk level and how much human oversight you need.</div>
+              </div>
+            </div>
+            <div class="framework-q">
+              <div>
+                <div class="q-text">What's the non-AI alternative, and is AI meaningfully better?</div>
+                <div class="q-subtext">This prevents you from building AI for AI's sake.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="scenario-box">
+          <div class="scenario-header">Real-World Application</div>
+          <div class="scenario-prompt">"Let's add AI to auto-respond to customer support tickets."</div>
+          <div class="scenario-analysis">
+            <div class="analysis-step">
+              <div class="step-num">1</div>
+              <div class="step-text">This is a <strong>generation</strong> problem (creating response text) combined with <strong>prediction</strong> (classifying ticket intent).</div>
+            </div>
+            <div class="analysis-step">
+              <div class="step-num">2</div>
+              <div class="step-text">If the AI is wrong, you send a <strong>wrong answer to a paying customer</strong> — high stakes. You need a human-in-the-loop or high-confidence thresholds.</div>
+            </div>
+            <div class="analysis-step">
+              <div class="step-num">3</div>
+              <div class="step-text">The non-AI alternative is templates + human agents. AI could be meaningfully better at handling <strong>repetitive L1 tickets</strong> (password resets, order status) but risky for complex complaints.</div>
+            </div>
+          </div>
+          <div class="scenario-verdict">
+            <span class="verdict-icon">→</span>
+            <span><strong>Product decision:</strong> Deploy AI for L1 tickets with high-confidence routing, keep humans for everything else. This is roughly what Klarna did.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 1.6 -->
+      <div class="subsection">
+        <h3>1.6 The Current State of AI (2024-2025)</h3>
+        <div class="snapshot-list">
+          <div class="snapshot-item">
+            <div class="snap-icon">📉</div>
+            <div>
+              <div class="snap-title">Foundation models are commoditizing</div>
+              <div class="snap-desc">GPT-4, Claude, Gemini, Llama — performance gaps are narrowing. The moat is not the model.</div>
+            </div>
+          </div>
+          <div class="snapshot-item">
+            <div class="snap-icon">🏗️</div>
+            <div>
+              <div class="snap-title">Value is moving to the application layer</div>
+              <div class="snap-desc">Whoever builds the best product experience on top of these models wins. This is where product people matter.</div>
+            </div>
+          </div>
+          <div class="snapshot-item">
+            <div class="snap-icon">🚀</div>
+            <div>
+              <div class="snap-title">Enterprise adoption is early but accelerating</div>
+              <div class="snap-desc">Most companies are in "pilot" or "experiment" phase. Very few have AI in production at scale. This means massive opportunity.</div>
+            </div>
+          </div>
+          <div class="snapshot-item">
+            <div class="snap-icon">🤖</div>
+            <div>
+              <div class="snap-title">Agents are the next frontier</div>
+              <div class="snap-desc">AI that doesn't just answer questions but takes actions — books meetings, writes and sends emails, executes multi-step workflows.</div>
+            </div>
+          </div>
+          <div class="snapshot-item">
+            <div class="snap-icon">💰</div>
+            <div>
+              <div class="snap-title">Cost of intelligence is dropping fast</div>
+              <div class="snap-desc">What cost $100 in API calls in early 2023 costs ~$1 now for equivalent quality. This unlocks previously unviable use cases.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Exercise -->
+      <div class="exercise-box">
+        <div class="exercise-label">✍️ Session 1 Exercise</div>
+        <div class="exercise-title">Think of a product you use daily (Spotify, Uber, Gmail, Slack — anything).</div>
+        <ol>
+          <li>What AI is likely already in this product? (predictive, generative, or analytical)</li>
+          <li>Apply the 3-Question Filter to one AI feature you'd add to this product.</li>
+          <li>What happens if that AI feature is wrong 10% of the time? Is that acceptable?</li>
+        </ol>
+        <div class="exercise-note">Share your answers in our chat and I'll give feedback.</div>
+      </div>
+
+      <!-- Exercise Feedback -->
+      <div class="exercise-feedback">
+        <div class="feedback-header">
+          <div class="feedback-title">📋 Your Exercise Feedback — Gmail Analysis</div>
+          <div class="score-badge">7 / 10</div>
+        </div>
+
+        <div class="feedback-item">
+          <div class="feedback-q-label">Question 1 — Identifying AI in Gmail</div>
+          <div class="feedback-good"><span class="fb-icon">✓</span> <span class="feedback-text">Spam detection as <strong>predictive AI</strong> — spot on. One of Google's oldest ML systems.</span></div>
+          <div class="feedback-correction"><span class="fb-icon">△</span> <span class="feedback-text">"Smart Compose" (text suggestions as you type) is <strong>generative AI</strong>, not predictive — it's generating new text completions, not predicting subject lines.</span></div>
+          <div class="feedback-correction"><span class="fb-icon">△</span> <span class="feedback-text">Storage pricing tiers aren't determined by analytical AI — that's a human business decision. A better example of <strong>analytical AI</strong> in Gmail: the <strong>search and priority inbox</strong> — it analyzes your email patterns to surface what's important and bury what isn't.</span></div>
+        </div>
+
+        <div class="feedback-item">
+          <div class="feedback-q-label">Question 2 — 3-Question Filter Applied</div>
+          <div class="feedback-good"><span class="fb-icon">✓</span> <span class="feedback-text">Auto-categorize emails is a solid feature idea, correctly identified as a <strong>prediction problem</strong>.</span></div>
+          <div class="feedback-good"><span class="fb-icon">✓</span> <span class="feedback-text">Risk assessment (wrong labels, random behavior) is reasonable.</span></div>
+          <div class="feedback-correction"><span class="fb-icon">△</span> <span class="feedback-text">You identified regex as the non-AI alternative, but missed the key question: <strong>"Is AI meaningfully better?"</strong> Yes — regex breaks when people write emails unpredictably, while ML understands context and intent. Always articulate the <em>why</em>.</span></div>
+        </div>
+
+        <div class="feedback-item">
+          <div class="feedback-q-label">Question 3 — Error Tolerance</div>
+          <div class="feedback-good"><span class="fb-icon">✓</span> <span class="feedback-text">10% wrong labels is annoying but not catastrophic — correct instinct. Weekly user review as a feedback loop is a smart product call.</span></div>
+          <div class="feedback-correction"><span class="fb-icon">△</span> <span class="feedback-text">Missing nuance: <strong>it depends on which emails are mislabeled.</strong> If 10% of "urgent" emails land in "promotional," that's a much bigger problem than 10% of newsletters getting the wrong tag. Always think about <em>where</em> the errors land, not just how many.</span></div>
+        </div>
+
+        <div class="feedback-takeaway">
+          <span class="takeaway-icon">💡</span>
+          <span><strong>Key Lesson:</strong> When assessing AI error tolerance, always ask "errors on what?" — a 10% error rate on low-stakes actions is fine, but the same rate on high-stakes actions can be a dealbreaker. This is the concept of <strong>asymmetric risk</strong> and it will come back in later sessions.</span>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ==================== SESSION 2 ==================== -->
+    <section class="session-block" id="session-2">
+      <div class="session-header">
+        <div class="session-tag"><span class="dot"></span> Session 02 · Week 1</div>
+        <h2>The AI Product Landscape</h2>
+        <div class="duration">Duration: 30-40 minutes · Day 2</div>
+      </div>
+
+      <!-- 2.1 -->
+      <div class="subsection">
+        <h3>2.1 Mapping the AI Product Universe</h3>
+        <p>
+          Before you can build or market AI products, you need a mental map of what exists. The AI product landscape is massive, but it follows a clear structure. Understanding this map tells you where the money is, where the competition is, and where the opportunities are.
+        </p>
+        <p>
+          There are essentially <strong>four categories</strong> of AI products in the market right now. Every AI company you encounter fits into one of these — and knowing which category you're in shapes everything from your GTM strategy to your pricing model.
+        </p>
+      </div>
+
+      <!-- 2.2 -->
+      <div class="subsection">
+        <h3>2.2 The Four Categories of AI Products</h3>
+
+        <div class="ai-type-cards">
+          <div class="ai-type-card" style="border-left: 3px solid var(--accent-cyan);">
+            <div class="type-label" style="color: var(--accent-cyan);">Category 1</div>
+            <div class="type-title">AI-Native Products</div>
+            <div class="type-desc">Products that couldn't exist without AI. The AI <em>is</em> the product. Remove the AI, and there's nothing left.</div>
+            <div class="corporate-example">
+              <div class="example-label">Examples</div>
+              <p><strong style="color:var(--text-primary)">ChatGPT / Claude</strong> — the entire product is an AI interface. <strong style="color:var(--text-primary)">Midjourney</strong> — AI image generation. <strong style="color:var(--text-primary)">GitHub Copilot</strong> — AI code completion. <strong style="color:var(--text-primary)">Perplexity</strong> — AI-powered search.</p>
+            </div>
+            <div class="mental-model">Moat: Data flywheels, user habits, brand trust</div>
+          </div>
+
+          <div class="ai-type-card" style="border-left: 3px solid var(--accent-purple);">
+            <div class="type-label" style="color: var(--accent-purple);">Category 2</div>
+            <div class="type-title">AI-Enhanced Products</div>
+            <div class="type-desc">Existing products that have added AI features to become better. The product existed before AI — now AI makes it more powerful.</div>
+            <div class="corporate-example">
+              <div class="example-label">Examples</div>
+              <p><strong style="color:var(--text-primary)">Notion AI</strong> — writing assistance inside an existing note-taking tool. <strong style="color:var(--text-primary)">Canva Magic</strong> — AI design features in an existing design tool. <strong style="color:var(--text-primary)">Salesforce Einstein</strong> — AI predictions inside an existing CRM. <strong style="color:var(--text-primary)">Gmail Smart Compose</strong> — generative text in existing email.</p>
+            </div>
+            <div class="mental-model">Moat: Existing user base, distribution, workflow lock-in</div>
+          </div>
+
+          <div class="ai-type-card" style="border-left: 3px solid var(--accent-orange);">
+            <div class="type-label" style="color: var(--accent-orange);">Category 3</div>
+            <div class="type-title">AI Infrastructure & Tooling</div>
+            <div class="type-desc">Products that help other companies build, deploy, and manage AI. They sell picks and shovels in the gold rush.</div>
+            <div class="corporate-example">
+              <div class="example-label">Examples</div>
+              <p><strong style="color:var(--text-primary)">Hugging Face</strong> — model hosting and community. <strong style="color:var(--text-primary)">LangChain</strong> — framework for building LLM applications. <strong style="color:var(--text-primary)">Pinecone</strong> — vector database for AI search. <strong style="color:var(--text-primary)">Scale AI</strong> — data labeling and evaluation. <strong style="color:var(--text-primary)">AWS Bedrock / Azure AI</strong> — cloud AI services.</p>
+            </div>
+            <div class="mental-model">Moat: Developer ecosystem, switching costs, integrations</div>
+          </div>
+
+          <div class="ai-type-card" style="border-left: 3px solid var(--accent-rose);">
+            <div class="type-label" style="color: var(--accent-rose);">Category 4</div>
+            <div class="type-title">Vertical AI Solutions</div>
+            <div class="type-desc">AI products built for a specific industry or use case. They combine domain expertise with AI to solve problems that general-purpose tools can't.</div>
+            <div class="corporate-example">
+              <div class="example-label">Examples</div>
+              <p><strong style="color:var(--text-primary)">Harvey</strong> — AI for law firms. <strong style="color:var(--text-primary)">Abridge</strong> — AI for medical documentation. <strong style="color:var(--text-primary)">AlphaFold</strong> — AI for protein structure prediction. <strong style="color:var(--text-primary)">Jasper</strong> — AI for marketing content. <strong style="color:var(--text-primary)">Moveworks</strong> — AI for IT support.</p>
+            </div>
+            <div class="mental-model">Moat: Domain data, regulatory knowledge, industry trust</div>
+          </div>
+        </div>
+
+        <div class="highlight-box cyan">
+          <h4>Why This Matters for You</h4>
+          <p>When you're job hunting or building products, the category you're in determines your entire strategy. An AI-native product competes on model quality and UX. An AI-enhanced product competes on integration and distribution. AI infrastructure competes on developer experience. Vertical AI competes on domain expertise. <strong>Know which game you're playing.</strong></p>
+        </div>
+      </div>
+
+      <!-- 2.3 -->
+      <div class="subsection">
+        <h3>2.3 Who's Building What — The Key Players</h3>
+        <p>The AI landscape has distinct layers, and different types of companies dominate each layer. Here's how to think about who's who:</p>
+
+        <div class="highlight-box">
+          <h4>Layer 1 — Foundation Model Providers (The "Model Makers")</h4>
+          <p><strong style="color:var(--text-primary)">Who:</strong> OpenAI, Anthropic, Google DeepMind, Meta AI, Mistral, Cohere</p>
+          <p>These companies train the massive base models that everyone else builds on. This is the most capital-intensive layer — training a frontier model can cost $100M+. The competition here is fierce and consolidating. As a product person, you're unlikely to work at this layer unless you join one of these companies directly.</p>
+        </div>
+
+        <div class="highlight-box cyan">
+          <h4>Layer 2 — Cloud & Compute (The "Landlords")</h4>
+          <p><strong style="color:var(--text-primary)">Who:</strong> AWS, Microsoft Azure, Google Cloud, NVIDIA, CoreWeave</p>
+          <p>They provide the computing power (GPUs) and cloud infrastructure to train and run AI models. NVIDIA is the undisputed king here — their GPUs power ~90% of AI training. Cloud providers make it easy to deploy models without managing hardware. This is a massive business but not where most product people operate.</p>
+        </div>
+
+        <div class="highlight-box orange">
+          <h4>Layer 3 — Application Layer (The "Builders" — Where You Want to Be)</h4>
+          <p><strong style="color:var(--text-primary)">Who:</strong> Thousands of startups + every SaaS company adding AI features</p>
+          <p>This is the layer where AI meets users. It's the fastest-growing layer, the most accessible for product people, and where the majority of AI product jobs exist. You take models from Layer 1, run them on Layer 2 infrastructure, and build products that solve real problems. <strong>This is your target zone.</strong></p>
+        </div>
+      </div>
+
+      <!-- 2.4 -->
+      <div class="subsection">
+        <h3>2.4 Where the Money Flows</h3>
+        <p>Understanding funding and revenue patterns tells you where the market believes value is being created. Here's the 2024-2025 picture:</p>
+
+        <div class="snapshot-list">
+          <div class="snapshot-item">
+            <div class="snap-icon">💰</div>
+            <div>
+              <div class="snap-title">Foundation models attracted the biggest checks</div>
+              <div class="snap-desc">OpenAI raised $6.6B at a $157B valuation (2024). Anthropic raised $7.3B+ across multiple rounds. xAI raised $6B. But this is a winner-takes-most game — there's room for maybe 5-7 major model providers globally.</div>
+            </div>
+          </div>
+          <div class="snapshot-item">
+            <div class="snap-icon">📈</div>
+            <div>
+              <div class="snap-title">Application-layer startups are where the volume is</div>
+              <div class="snap-desc">Hundreds of well-funded startups building AI products for specific use cases. This is where most new AI product roles are being created. Examples: Glean ($4.6B valuation for enterprise AI search), Cursor (AI code editor), Writer (enterprise AI writing).</div>
+            </div>
+          </div>
+          <div class="snapshot-item">
+            <div class="snap-icon">🏢</div>
+            <div>
+              <div class="snap-title">Enterprise spend on AI is the real story</div>
+              <div class="snap-desc">Every Fortune 500 company has an AI budget now. McKinsey estimates AI could add $4.4 trillion annually to the global economy. The biggest spend is on integrating AI into existing workflows — not on flashy chatbots.</div>
+            </div>
+          </div>
+          <div class="snapshot-item">
+            <div class="snap-icon">⚠️</div>
+            <div>
+              <div class="snap-title">Revenue vs. hype gap exists</div>
+              <div class="snap-desc">Many AI startups have high valuations but modest revenue. The companies that are actually making money are those with clear enterprise use cases and measurable ROI — not those with the most impressive demos.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2.5 -->
+      <div class="subsection">
+        <h3>2.5 The Build vs. Buy vs. Integrate Decision</h3>
+        <p>
+          Every company adopting AI faces this decision. As a product person, you'll be asked to make this call — or at least influence it. Here's the framework:
+        </p>
+
+        <div class="framework-box">
+          <div class="framework-title"><span class="icon">🔧</span> Build vs. Buy vs. Integrate</div>
+          <div class="framework-questions">
+            <div class="framework-q">
+              <div>
+                <div class="q-text">BUILD your own AI — Train or fine-tune models in-house</div>
+                <div class="q-subtext">When: You have proprietary data that's your competitive advantage, you need full control, and you have the engineering talent. Example: Netflix building its own recommendation engine — their data IS their moat.</div>
+              </div>
+            </div>
+            <div class="framework-q">
+              <div>
+                <div class="q-text">BUY an AI product — Purchase a vertical AI solution</div>
+                <div class="q-subtext">When: A specialized vendor solves your exact problem better than you could. You want fast deployment and don't need deep customization. Example: A law firm buying Harvey instead of building their own legal AI.</div>
+              </div>
+            </div>
+            <div class="framework-q">
+              <div>
+                <div class="q-text">INTEGRATE AI APIs — Plug foundation models into your product</div>
+                <div class="q-subtext">When: You want AI capabilities without building models. You need flexibility and speed to market. Most common approach for startups. Example: Notion integrating Claude/GPT APIs for writing assistance.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="scenario-box">
+          <div class="scenario-header">Real-World Decision</div>
+          <div class="scenario-prompt">"We're a mid-size e-commerce company. Should we build our own AI chatbot for customer support?"</div>
+          <div class="scenario-analysis">
+            <div class="analysis-step">
+              <div class="step-num">1</div>
+              <div class="step-text"><strong>BUILD?</strong> Probably not. You'd need an ML team of 5-10 people ($2M+/year). Unless customer support is your core differentiator, this is overkill.</div>
+            </div>
+            <div class="analysis-step">
+              <div class="step-num">2</div>
+              <div class="step-text"><strong>BUY?</strong> Strong option. Products like Intercom Fin, Zendesk AI, or Ada already have pre-built customer support AI. Deployment in weeks, not months.</div>
+            </div>
+            <div class="analysis-step">
+              <div class="step-num">3</div>
+              <div class="step-text"><strong>INTEGRATE?</strong> Good middle ground. Use Claude or GPT APIs, feed in your product catalog and FAQ data via RAG, build a custom interface. More control than BUY, cheaper than BUILD.</div>
+            </div>
+          </div>
+          <div class="scenario-verdict">
+            <span class="verdict-icon">→</span>
+            <span><strong>Product decision:</strong> Most mid-size companies should start with BUY or INTEGRATE. Only BUILD when AI is your core product or when you have unique data that gives you a genuine advantage.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2.6 -->
+      <div class="subsection">
+        <h3>2.6 Market Trends You Must Track</h3>
+        <p>These are the five shifts shaping the AI product landscape right now. Each one creates new product opportunities:</p>
+
+        <div class="snapshot-list">
+          <div class="snapshot-item">
+            <div class="snap-icon">1️⃣</div>
+            <div>
+              <div class="snap-title">From chatbots to agents</div>
+              <div class="snap-desc">The market is moving beyond "ask AI a question" to "AI does the work for you." Products like Devin (AI software engineer), Operator (OpenAI's computer-using agent), and enterprise workflow agents are the frontier. This changes how you design product UX — from chat interfaces to task-completion interfaces.</div>
+            </div>
+          </div>
+          <div class="snapshot-item">
+            <div class="snap-icon">2️⃣</div>
+            <div>
+              <div class="snap-title">From general to specialized</div>
+              <div class="snap-desc">General-purpose AI (ChatGPT, Claude) is powerful but vertical-specific AI products are capturing enterprise budgets. A legal AI that understands case law beats a general chatbot every time for a law firm. Specialization = higher willingness to pay.</div>
+            </div>
+          </div>
+          <div class="snapshot-item">
+            <div class="snap-icon">3️⃣</div>
+            <div>
+              <div class="snap-title">From single-model to multi-model</div>
+              <div class="snap-desc">Smart products are routing different tasks to different models. Use a fast, cheap model for simple tasks and a powerful, expensive model for complex ones. This is called "model routing" and it dramatically reduces costs while maintaining quality.</div>
+            </div>
+          </div>
+          <div class="snapshot-item">
+            <div class="snap-icon">4️⃣</div>
+            <div>
+              <div class="snap-title">From cloud to edge</div>
+              <div class="snap-desc">Smaller AI models are running directly on devices (phones, laptops). Apple Intelligence, on-device Gemini Nano, and local LLMs mean some AI features work without internet. This opens new product categories around privacy and speed.</div>
+            </div>
+          </div>
+          <div class="snapshot-item">
+            <div class="snap-icon">5️⃣</div>
+            <div>
+              <div class="snap-title">From "AI feature" to "AI-first redesign"</div>
+              <div class="snap-desc">The first wave was adding AI buttons to existing products. The next wave is rethinking entire products around AI capabilities. Example: Cursor didn't add AI to VS Code — they redesigned the entire code editor experience around AI being the primary collaborator.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2.7 -->
+      <div class="subsection">
+        <h3>2.7 A Framework for Evaluating Any AI Product</h3>
+        <p>When you encounter a new AI product — as a user, a competitor, or a potential employer — use this evaluation lens:</p>
+
+        <div class="framework-box">
+          <div class="framework-title"><span class="icon">🔍</span> The AI Product Evaluation Grid</div>
+          <div class="framework-questions">
+            <div class="framework-q">
+              <div>
+                <div class="q-text">Which of the 4 categories is this? (Native, Enhanced, Infrastructure, Vertical)</div>
+                <div class="q-subtext">This tells you their competitive dynamics and go-to-market strategy.</div>
+              </div>
+            </div>
+            <div class="framework-q">
+              <div>
+                <div class="q-text">What's their moat? (Data, distribution, domain expertise, user habit, or nothing?)</div>
+                <div class="q-subtext">If the answer is "we use GPT-4" — they have no moat. Anyone can do that.</div>
+              </div>
+            </div>
+            <div class="framework-q">
+              <div>
+                <div class="q-text">Who pays, and why can't they just use ChatGPT directly?</div>
+                <div class="q-subtext">The "ChatGPT wrapper" problem. If your product is just a prettier interface on top of a foundation model, you're vulnerable.</div>
+              </div>
+            </div>
+            <div class="framework-q">
+              <div>
+                <div class="q-text">What happens when models get better and cheaper?</div>
+                <div class="q-subtext">Some AI products become more valuable as models improve (platforms). Others become obsolete (thin wrappers). Which one is this?</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="scenario-box">
+          <div class="scenario-header">Apply the Grid — Grammarly</div>
+          <div class="scenario-prompt">"Evaluate Grammarly as an AI product using the grid."</div>
+          <div class="scenario-analysis">
+            <div class="analysis-step">
+              <div class="step-num">1</div>
+              <div class="step-text"><strong>Category:</strong> AI-Enhanced product (it started as rule-based grammar checking, now heavily AI-powered with generative rewriting features).</div>
+            </div>
+            <div class="analysis-step">
+              <div class="step-num">2</div>
+              <div class="step-text"><strong>Moat:</strong> Distribution (30M daily users, browser extension installed everywhere, deep integrations into workflows). Plus years of writing data to fine-tune on.</div>
+            </div>
+            <div class="analysis-step">
+              <div class="step-num">3</div>
+              <div class="step-text"><strong>Why not just use ChatGPT?</strong> Grammarly works <em>inside</em> your existing tools — Gmail, Docs, Slack. You don't have to copy-paste into a separate window. That seamless integration is the product value.</div>
+            </div>
+            <div class="analysis-step">
+              <div class="step-num">4</div>
+              <div class="step-text"><strong>When models improve?</strong> Threat is real. As native AI gets better in Gmail and Google Docs, Grammarly's value proposition erodes. They're counter-moving by becoming an "AI communication assistant" — more than just grammar.</div>
+            </div>
+          </div>
+          <div class="scenario-verdict">
+            <span class="verdict-icon">→</span>
+            <span><strong>Assessment:</strong> Strong product with real moat (distribution), but under platform risk as OS-level AI improves. A good case study of how AI-enhanced products must keep evolving.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Exercise -->
+      <div class="exercise-box">
+        <div class="exercise-label">✍️ Session 2 Exercise</div>
+        <div class="exercise-title">Pick any AI product or company (not Gmail this time).</div>
+        <ol>
+          <li>Which of the 4 categories does it belong to? Why?</li>
+          <li>Apply the AI Product Evaluation Grid — what's their moat, and is it defensible?</li>
+          <li>If you were a competitor, how would you attack this product's position?</li>
+        </ol>
+        <div class="exercise-note">Share your answers in our chat and I'll give feedback.</div>
+      </div>
+
+    </section>
+
+    <section class="session-block" id="session-3">
+      <div class="session-header">
+        <div class="session-tag"><span class="dot" style="background:var(--text-muted)"></span> Session 03 · Week 1</div>
+        <h2>How LLMs Work (No-Code Explanation)</h2>
+        <div class="duration">Duration: 30-40 minutes · Day 3</div>
+      </div>
+      <div class="locked-section">
+        <div class="lock-emoji">🔒</div>
+        <div class="lock-text">This session will be unlocked when you're ready.<br>Say <strong>"Session 3"</strong> in our chat to begin.</div>
+      </div>
+    </section>
+
+    <section class="session-block" id="session-4">
+      <div class="session-header">
+        <div class="session-tag"><span class="dot" style="background:var(--text-muted)"></span> Session 04 · Week 1</div>
+        <h2>AI Product vs Traditional Product</h2>
+        <div class="duration">Duration: 30-40 minutes · Day 4</div>
+      </div>
+      <div class="locked-section">
+        <div class="lock-emoji">🔒</div>
+        <div class="lock-text">This session will be unlocked when you're ready.<br>Say <strong>"Session 4"</strong> in our chat to begin.</div>
+      </div>
+    </section>
+
+    <section class="session-block" id="session-5">
+      <div class="session-header">
+        <div class="session-tag"><span class="dot" style="background:var(--text-muted)"></span> Session 05 · Week 1</div>
+        <h2>The AI Value Chain</h2>
+        <div class="duration">Duration: 30-40 minutes · Day 5</div>
+      </div>
+      <div class="locked-section">
+        <div class="lock-emoji">🔒</div>
+        <div class="lock-text">This session will be unlocked when you're ready.<br>Say <strong>"Session 5"</strong> in our chat to begin.</div>
+      </div>
+    </section>
+
+    <section class="session-block" id="week1-exam">
+      <div class="session-header">
+        <div class="session-tag"><span class="dot" style="background:var(--text-muted)"></span> Exam · Week 1</div>
+        <h2>Week 1 Examination</h2>
+        <div class="duration">Duration: 30 minutes · Day 6</div>
+      </div>
+      <div class="locked-section">
+        <div class="lock-emoji">📝</div>
+        <div class="lock-text">Complete Sessions 1-5 to unlock the Week 1 Exam.</div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<!-- Back to Top -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+// Desktop sidebar toggle
+const desktopToggle = document.getElementById('desktopToggle');
+desktopToggle.addEventListener('click', () => {
+  document.body.classList.toggle('sidebar-collapsed');
+});
+
+// Mobile sidebar toggle
+const sidebar = document.getElementById('sidebar');
+const overlay = document.getElementById('sidebarOverlay');
+const toggle = document.getElementById('mobileToggle');
+
+toggle.addEventListener('click', () => {
+  sidebar.classList.toggle('open');
+  overlay.classList.toggle('active');
+});
+
+overlay.addEventListener('click', () => {
+  sidebar.classList.remove('open');
+  overlay.classList.remove('active');
+});
+
+// Close sidebar on nav link click (mobile)
+document.querySelectorAll('.nav-link:not(.locked)').forEach(link => {
+  link.addEventListener('click', () => {
+    if (window.innerWidth <= 900) {
+      sidebar.classList.remove('open');
+      overlay.classList.remove('active');
+    }
+  });
+});
+
+// Collapsible week sections
+function toggleWeek(el) {
+  const items = el.nextElementSibling;
+  items.classList.toggle('collapsed');
+}
+
+// Back to top button
+const backToTop = document.getElementById('backToTop');
+window.addEventListener('scroll', () => {
+  backToTop.classList.toggle('visible', window.scrollY > 400);
+});
+
+// Active nav link on scroll
+const sessions = document.querySelectorAll('.session-block');
+const navLinks = document.querySelectorAll('.nav-link:not(.locked)');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(l => l.classList.remove('active'));
+      const id = entry.target.id;
+      const activeLink = document.querySelector(`.nav-link[href="#${id}"]`);
+      if (activeLink) activeLink.classList.add('active');
+    }
+  });
+}, { rootMargin: '-20% 0px -70% 0px' });
+
+sessions.forEach(s => observer.observe(s));
+
+// PWA Service Worker Registration
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('sw.js')
+      .then(reg => console.log('SW registered:', reg.scope))
+      .catch(err => console.log('SW registration failed:', err));
+  });
+}
+</script>
+
+</body>
+</html>
